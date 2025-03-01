@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@400;700&family=Satisfy&display=swap');
 
-    body, html {
+    body,
+    html {
       margin: 0;
       padding: 0;
       height: 100vh;
@@ -21,9 +23,17 @@
     }
 
     @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
     .hug-day-container {
@@ -32,7 +42,7 @@
       border-radius: 30px;
       padding: 40px;
       backdrop-filter: blur(10px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
       transform-style: preserve-3d;
       transform: rotateX(10deg);
       transition: all 0.5s ease;
@@ -48,9 +58,24 @@
       transition: color 0.5s ease;
     }
 
+    .hug-day-text {
+      font-family: 'Pacifico', cursive;
+      font-size: 24px;
+      color: #0c0107;
+      text-shadow: 4px 4px 8px rgba(255, 20, 147, 0.3);
+      animation: textGlow 3s ease-in-out infinite alternate;
+      margin-bottom: 30px;
+      transition: color 0.5s ease;
+    }
+
     @keyframes textGlow {
-      0% { text-shadow: 4px 4px 8px rgba(255, 20, 147, 0.3); }
-      100% { text-shadow: 4px 4px 20px rgba(255, 20, 147, 0.6); }
+      0% {
+        text-shadow: 4px 4px 8px rgba(255, 20, 147, 0.3);
+      }
+
+      100% {
+        text-shadow: 4px 4px 20px rgba(255, 20, 147, 0.6);
+      }
     }
 
     .kiss-emoji {
@@ -67,10 +92,12 @@
         opacity: 1;
         transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
       }
+
       70% {
         opacity: 0.7;
         transform: translate(var(--x-end), var(--y-end)) scale(1) rotate(var(--rotation));
       }
+
       100% {
         opacity: 0;
         transform: translate(var(--x-end), var(--y-end)) scale(1.5) rotate(var(--rotation));
@@ -82,7 +109,7 @@
       height: 300px;
       border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
       margin: 30px auto;
       position: relative;
       transition: all 0.5s ease;
@@ -113,32 +140,46 @@
       cursor: pointer;
       background-size: 200% auto;
       transition: all 0.3s ease;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
       animation: buttonGradient 3s ease infinite;
     }
 
     @keyframes buttonGradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
     .magical-button:hover {
       transform: scale(1.1) rotate(2deg);
-      box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
     }
   </style>
 </head>
+
 <body>
   <div class="hug-day-container">
     <div class="hug-day-title">Happy Birthday Prachi!</div>
-    
+
     <div class="gif-container">
-      <img src="Final hug.gif" alt="Birthday GIF" style="width:100%; height:100%; object-fit:cover;">
+      <video style="width: 440px; height: auto;" autoplay muted loop>
+        <source src="prachi.mp4" type="video/mp4" >
+      </video>
     </div>
-    
-    <div class="love-message">Love You, Prachi!</div>
-    
+
+    <!-- <div class="love-message">Love You, Prachi!</div> -->
+
+    <div class="hug-day-text">Cheers and smiles, I wish you happiness for miles! You are remarkable, remember that every
+      day, wishing you a happy birthday.</div>
+
     <button class="magical-button" id="celebrateButton">Celebrate BirthDay</button>
   </div>
 
@@ -150,20 +191,20 @@
       const emoji = document.createElement('div');
       emoji.classList.add('kiss-emoji');
       emoji.textContent = kissEmojis[Math.floor(Math.random() * kissEmojis.length)];
-      
+
       // Random end position
       const endX = Math.random() * window.innerWidth;
       const endY = Math.random() * window.innerHeight;
-      
+
       emoji.style.setProperty('--x-end', `${endX - startX}px`);
       emoji.style.setProperty('--y-end', `${endY - startY}px`);
       emoji.style.setProperty('--rotation', `${Math.random() * 360}deg`);
-      
+
       emoji.style.left = `${startX}px`;
       emoji.style.top = `${startY}px`;
-      
+
       document.body.appendChild(emoji);
-      
+
       // Remove emoji after animation
       emoji.addEventListener('animationend', () => {
         emoji.remove();
@@ -215,4 +256,5 @@
     document.addEventListener('click', spreadKissEmojis);
   </script>
 </body>
+
 </html>
